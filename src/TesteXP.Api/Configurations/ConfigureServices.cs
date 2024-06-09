@@ -1,4 +1,3 @@
-using FluentScheduler;
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
 using Keycloak.AuthServices.Sdk.Admin;
@@ -6,12 +5,10 @@ using Serilog;
 using Serilog.Events;
 using TesteXP.Infra;
 using TesteXP.Infra.Interfaces;
+using TesteXP.ProdutosFinanceiros.Application;
+using TesteXP.ProdutosFinanceiros.Application.Interfaces;
+using TesteXP.Usuarios.Application;
 using TesteXP.Usuarios.Application.Interfaces;
-using TesteXP.Usuarios.Application.Models.Requests;
-using TesteXP.Usuarios.Application.Repository;
-using TesteXP.Usuarios.Application.Services;
-using TesteXP.Usuarios.Application.TableDataGateway;
-using TesteXP.Usuarios.Application.Validators;
 
 namespace TesteXP.Api.Configurations
 {
@@ -89,43 +86,13 @@ namespace TesteXP.Api.Configurations
         public static void ConfigurarDependencias(this WebApplicationBuilder builder)
         {
             builder.Services
-                .AddSingleton<ICustomValidator<CadastrarUsuarioRequest>, CadastrarUsuarioRequestValidator>()
-                .AddSingleton<ICustomValidator<ExcluirUsuarioRequest>, ExcluirUsuarioRequestValidator>();
-
-            builder.Services
-                .AddScoped<IDatabaseConnection, DatabaseConnection>()
-                .AddScoped<ICreateDatabaseService, CreateDatabaseService>();
+                .AddScoped<IDatabaseConnection, DatabaseConnection>();
 
             builder.Services
                 .AddScoped<IUnitOfWork, UnitOfWork>();
 
-            builder.Services
-                .AddScoped<IUsuarioTableDataGateway, UsuarioTableDataGateway>()
-                .AddScoped<IEventoTableDataGateway, EventoTableDataGateway>();
-
-            builder.Services
-                .AddScoped<IUsuarioRepository, UsuarioRepository>();
-
-            builder.Services
-                .AddScoped<ICadastrarUsuarioService, CadastrarUsuarioService>()
-                .AddScoped<IExcluirUsuarioService, ExcluirUsuarioService>()
-                .AddScoped<IConsultarUsuariosService, ConsultarUsuariosService>();
-
-            // builder.Services
-            //     .AddTransient<IDomainEventDispatcher, DomainEventDispatcher>()
-            //     .AddTransient<IUsuarioInativadoMessageHandler, UsuarioInativadoMessageHandler>()
-            //     .AddTransient<IUsuarioInativadoKeyCloakHandler, UsuarioInativadoKeyCloakHandler>()
-            //     .AddTransient<IUsuarioCadastradoMessageHandler, UsuarioCadastradoMessageHandler>()
-            //     .AddTransient<IUsuarioCadastradoKeyCloakHandler, UsuarioCadastradoKeyCloakHandler>()
-            //     .AddTransient<IUsuarioCadastradoEnviarSenhaHandler, UsuarioCadastradoEnviarSenhaHandler>()
-            //     .AddTransient<IUsuarioTrocarSenhaKeyCloakHandler, UsuarioTrocarSenhaKeyCloakHandler>()
-            //     .AddTransient<IUsuarioExcluidoKeycloakHandler, UsuarioExcluidoKeycloakHandler>()
-            //     .AddTransient<IUsuarioExcluidoMessageHandler, UsuarioExcluidoMessageHandler>()
-            //     .AddTransient<IUsuarioReativadoKeycloakHandler, UsuarioReativadoKeycloakHandler>()
-            //     .AddTransient<IUsuarioReativadoMessageHandler, UsuarioReativoMessageHandler>();
-
-            // builder.Services
-            //     .AddTransient<IProcessadorEventosJob, ProcessadorEventosJob>();
+            builder.Services.ConfigurarDependenciasUsuario();
+            builder.Services.ConfigurarDependenciasProdutoFinanceiro();
         }
 
         public static void ConfigurarSwagger(this WebApplicationBuilder builder)
@@ -161,12 +128,17 @@ namespace TesteXP.Api.Configurations
         public static async Task CreateDatabase(this WebApplicationBuilder builder)
         {
             var serviceProvider = builder.Services.BuildServiceProvider();
-            var createDatabaseService = serviceProvider.GetService<ICreateDatabaseService>();
+            var createDatabaseServiceUsuario = serviceProvider.GetService<ICreateDatabaseUsuarioService>();
+            var createDatabaseServiceFinanceiro = serviceProvider.GetService<ICreateDatabaseFinanceiroService>();
 
-            if (createDatabaseService is null)
-                throw new NullReferenceException("Não foi possível recuperar um objeto de serviço para criação da estrutura relacional");
+            if (createDatabaseServiceUsuario is null)
+                throw new NullReferenceException("não foi possível recuperar um objeto de serviço para criação da estrutura relacional dos usuarios");
 
-            await createDatabaseService.CreateDatabase();
+            if (createDatabaseServiceFinanceiro is null)
+                throw new NullReferenceException("Não foi possível recuperar um objeto de serviço para criação da estrutura relacional do financeiro");
+
+            await createDatabaseServiceUsuario.CreateDatabase();
+            await createDatabaseServiceFinanceiro.CreateDatabase();
         }
     }
 }

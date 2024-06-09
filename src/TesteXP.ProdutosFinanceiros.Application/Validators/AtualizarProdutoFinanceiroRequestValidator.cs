@@ -25,7 +25,6 @@ namespace TesteXP.ProdutosFinanceiros.Application.Validators
                 .NotEmpty().WithMessage("o status é obrigatrório");
 
             RuleFor(x => x.DisponivelParaVenda)
-                .IsInEnum()
                 .NotEmpty().WithMessage("o campo disponivel para venda é obrigatrório");
         }
     }

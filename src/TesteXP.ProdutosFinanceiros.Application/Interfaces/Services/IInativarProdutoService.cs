@@ -1,7 +1,7 @@
 namespace TesteXP.ProdutosFinanceiros.Application.Interfaces
 {
-    public interface ICreateDatabaseService
+    public interface IInativarProdutoService
     {
-        Task CreateDatabase();
+        Task Inativar(int id);
     }
 }

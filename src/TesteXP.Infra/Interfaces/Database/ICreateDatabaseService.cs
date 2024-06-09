@@ -1,4 +1,4 @@
-namespace TesteXP.Usuarios.Application.Interfaces
+namespace TesteXP.Infra.Interfaces
 {
     public interface ICreateDatabaseService
     {

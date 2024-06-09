@@ -13,8 +13,8 @@ namespace TesteXP.ProdutosFinanceiros.Application.TableDataGateway
         public async Task AtualizarStatus(int status, int id) =>
             await ExecutarComando(ProdutoFinanceiroTableDataGatewaySql.ATUALIZAR_STATUS, new { Status = status, Id = id });
 
-        public async Task<List<ProdutoFinanceiroPO>> Consultar() =>
-            await ExecutarConsultaComResultadoLista<ProdutoFinanceiroPO>(ProdutoFinanceiroTableDataGatewaySql.CONSULTAR_TODOS);
+        public async Task<List<ProdutoFinanceiroPO>> ConsultarProdutosDisponiveisPraVenda() =>
+            await ExecutarConsultaComResultadoLista<ProdutoFinanceiroPO>(ProdutoFinanceiroTableDataGatewaySql.CONSULTAR_PRODUTOS_DISPONIVEIS_PRA_VENDA);
 
         public async Task<ProdutoFinanceiroPO?> ConsultarPorId(int id) =>
             await ExecutarConsultaComUmResultado<ProdutoFinanceiroPO>(ProdutoFinanceiroTableDataGatewaySql.CONSULTAR_POR_ID, new { Id = id });

@@ -26,8 +26,8 @@ public class ProdutoFinanceiroRepository : IProdutoFinanceiroRepository
     public async Task Cadastrar(ProdutoFinanceiro produto) =>
         await _produtoFinanceiroTableDataGateway.Cadastrar(produto.ToProdutoFinanceiroPO());
 
-    public async Task<List<ProdutoFinanceiro>> Consultar() =>
-        (await _produtoFinanceiroTableDataGateway.Consultar()).ToProdutoFinanceiroEntidade();
+    public async Task<List<ProdutoFinanceiro>> ConsultarProdutosDisponiveisPraVenda() =>
+        (await _produtoFinanceiroTableDataGateway.ConsultarProdutosDisponiveisPraVenda()).ToProdutoFinanceiroEntidade();
 
     public async Task<ProdutoFinanceiro> ConsultarPorId(int id) =>
         (await _produtoFinanceiroTableDataGateway.ConsultarPorId(id)).ToProdutoFinanceiroEntidade();

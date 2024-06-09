@@ -5,7 +5,7 @@ using TesteXP.Usuarios.Application.Interfaces;
 
 namespace TesteXP.Usuarios.Application.TableDataGateway
 {
-    public class CreateDatabaseService : ICreateDatabaseService
+    public class CreateDatabaseService : ICreateDatabaseUsuarioService
     {
         private readonly IDatabaseConnection _dbConnection;
         public CreateDatabaseService(IDatabaseConnection dbConnection)
@@ -17,9 +17,9 @@ namespace TesteXP.Usuarios.Application.TableDataGateway
         {
             try
             {
-                using (var con = _dbConnection.GetConnection())
-                {
-                    string sql = @"
+                var con = _dbConnection.GetConnection();
+
+                string sql = @"
                                 CREATE TABLE IF NOT EXISTS Usuario (
                                     Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                                     Nome VARCHAR(200) NOT NULL,
@@ -39,8 +39,7 @@ namespace TesteXP.Usuarios.Application.TableDataGateway
                                     Data DATETIME NOT NULL
                                 );";
 
-                    await con.ExecuteScalarAsync(sql);
-                }
+                await con.ExecuteScalarAsync(sql);
             }
             catch (Exception ex)
             {

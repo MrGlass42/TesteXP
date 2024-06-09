@@ -31,16 +31,20 @@ namespace TesteXP.ProdutosFinanceiros.Application.TableDataGateway.Sql
         public static readonly string CONSULTAR_POR_ID = @"
             SELECT
                 *
+            FROM    
                 ProdutoFinanceiro
             WHERE 1=1
                 AND Id = @Id;
         ";
 
-        public static readonly string CONSULTAR_TODOS = @"
+        public static readonly string CONSULTAR_PRODUTOS_DISPONIVEIS_PRA_VENDA = @"
             SELECT
                 *
+            FROM 
                 ProdutoFinanceiro
-            WHERE 1=1;
+            WHERE 1=1
+                AND Status = 0
+                AND DisponivelParaVenda = TRUE;
         ";
     }
 }
