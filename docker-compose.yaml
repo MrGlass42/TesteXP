@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql
+    restart: unless-stopped
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "root!"
+
+  keycloak:
+      container_name: keycloak
+      image: quay.io/keycloak/keycloak:legacy
+      restart: unless-stopped
+      environment:
+        DB_VENDOR: MYSQL
+        DB_ADDR: mysql
+        DB_DATABASE: keycloak
+        DB_USER: root
+        DB_PASSWORD: root!
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+        PROXY_ADDRESS_FORWARDING: 'true'
+      depends_on:
+        - mysql
+      ports:
+        - "4000:8080"
+
+volumes:
+  dbdata:
+    external: false
+
+networks: 
+  default: 
+    name: xp-nt
