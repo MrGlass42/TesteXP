@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TesteXP.Usuarios.Application\TesteXP.Usuarios.Application.csproj" />
+    <ProjectReference Include="..\TesteXP.ProdutosFinanceiros.Application\TesteXP.ProdutosFinanceiros.Application.csproj" />
   </ItemGroup>
 
 </Project>

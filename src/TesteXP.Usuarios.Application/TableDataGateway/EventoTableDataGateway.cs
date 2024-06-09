@@ -1,4 +1,5 @@
 using TesteXP.Infra.Interfaces;
+using TesteXP.Infra.TableDataGateway;
 using TesteXP.Usuarios.Application.Interfaces;
 using TesteXP.Usuarios.Application.TableDataGateway.PersistenceObjects;
 using TesteXP.Usuarios.Application.TableDataGateway.Sql;

@@ -2,7 +2,7 @@ using System.Data;
 using Dapper;
 using TesteXP.Infra.Interfaces;
 
-namespace TesteXP.Usuarios.Application.TableDataGateway
+namespace TesteXP.Infra.TableDataGateway
 {
     public class BaseTableDataGateway
     {
