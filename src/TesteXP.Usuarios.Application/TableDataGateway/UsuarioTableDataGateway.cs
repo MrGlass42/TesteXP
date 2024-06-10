@@ -22,6 +22,10 @@ namespace TesteXP.Usuarios.Application.TableDataGateway
         public async Task<UsuarioPO?> ConsultarPorId(int usuarioId) =>
             await ExecutarConsultaComUmResultado<UsuarioPO>
                     (UsuarioTableDataGatewaySql.CONSULTAR_POR_ID, new { Id = usuarioId });
+
+        public async Task<UsuarioPO?> ConsultarPorNome(string nome) =>
+            await ExecutarConsultaComUmResultado<UsuarioPO>(UsuarioTableDataGatewaySql.CONSULTAR_POR_NOME, new {Nome = nome});
+
         public async Task Excluir(int id) =>
             await ExecutarComando(UsuarioTableDataGatewaySql.EXCLUIR_USUARIO, new { Id = id });
 

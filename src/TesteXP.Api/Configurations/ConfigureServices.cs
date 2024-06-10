@@ -1,3 +1,4 @@
+using FluentScheduler;
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
 using Keycloak.AuthServices.Sdk.Admin;
@@ -9,6 +10,7 @@ using TesteXP.ProdutosFinanceiros.Application;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces;
 using TesteXP.Usuarios.Application;
 using TesteXP.Usuarios.Application.Interfaces;
+using TesteXP.Usuarios.Application.Interfaces.Jobs;
 
 namespace TesteXP.Api.Configurations
 {
@@ -101,28 +103,19 @@ namespace TesteXP.Api.Configurations
         }
 
 
-        public static void ConfigurarApiClients(this WebApplicationBuilder builder)
-        {
-            builder.Services.AddHttpClient();
-
-            // builder.Services
-            //     .AddTransient<IEmailHttpClient, EmailHttpClient>()
-            //     .AddTransient<IKeycloakHttpClient, KeycloakHttpClient>();
-        }
-
         public static void RegistrarJobs(this WebApplicationBuilder builder)
         {
             var serviceProvider = builder.Services.BuildServiceProvider();
-            // var processadorEventosJob = serviceProvider.GetService<IProcessadorEventosJob>();
+            var processadorEventosJob = serviceProvider.GetService<IProcessadorEventosJob>();
 
-            // if (processadorEventosJob is null)
-            //     throw new NullReferenceException("Não foi possível recuperar um objeto de serviço para o job.");
+            if (processadorEventosJob is null)
+                throw new NullReferenceException("não foi possível recuperar um objeto de serviço para o job.");
 
-            // JobManager.Initialize();
+            JobManager.Initialize();
 
-            // JobManager.AddJob(() =>
-            //     processadorEventosJob.Execute(),
-            //     s => s.NonReentrant().ToRunEvery(10).Seconds());
+            JobManager.AddJob(() =>
+                processadorEventosJob.Execute(),
+                s => s.NonReentrant().ToRunEvery(10).Seconds());
         }
 
         public static async Task CreateDatabase(this WebApplicationBuilder builder)

@@ -20,7 +20,7 @@ namespace TesteXP.Usuarios.Application.Services
         {
             _validator.ExecuteValidation(request);
 
-            var cadastroPermitido = await _usuarioRepo.CadastroPermitido(request.Email);
+            var cadastroPermitido = await _usuarioRepo.CadastroPermitido(request.Email, request.Nome);
 
             if (cadastroPermitido is false)
                 throw new CadastroNegadoException(request.Email, "não foi possível cadastrar uma conta");

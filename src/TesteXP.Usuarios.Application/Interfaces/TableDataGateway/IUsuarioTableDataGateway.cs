@@ -10,5 +10,6 @@ namespace TesteXP.Usuarios.Application.Interfaces
         Task<UsuarioPO?> ConsultarPorId(int usuarioId);
         Task AtualizarStatus(int status, int usuarioId);
         Task<UsuarioPO?> ConsultarPorEmail(string email);
+        Task<UsuarioPO?> ConsultarPorNome(string nome);
     }
 }

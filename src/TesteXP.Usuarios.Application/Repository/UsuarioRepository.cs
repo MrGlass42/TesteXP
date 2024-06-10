@@ -23,8 +23,20 @@ namespace TesteXP.Usuarios.Application.Repository
             _eventoTableDataGateway = eventoTableDataGateway;
         }
 
-        public async Task<bool> CadastroPermitido(string email) =>
-            (await _usuarioTableDataGateway.ConsultarPorEmail(email)) is null;
+        public async Task<bool> CadastroPermitido(string email, string nome)
+        {
+            UsuarioPO? usuario = await _usuarioTableDataGateway.ConsultarPorEmail(email);
+
+            if (usuario is not null)
+                return false;
+
+            usuario = await _usuarioTableDataGateway.ConsultarPorNome(nome);
+
+            if (usuario is not null)
+                return false;
+
+            return true;
+        }
 
         public async Task<List<Usuario>> Consultar() => (await _usuarioTableDataGateway.Consultar()).ToUsuarioEntidade();
 
@@ -37,7 +49,7 @@ namespace TesteXP.Usuarios.Application.Repository
             _unitOfWork.AddDatabaseOperation(() =>
             {
                 _usuarioTableDataGateway.AtualizarStatus((int)EStatusUsuario.Inativo, usuario.Id).Wait();
-                _eventoTableDataGateway.Inserir(new EventoPO(ETipoEvento.USUARIO_EXCLUIDO, "USUARIO_EXCLUIDO", usuario.ToUsuarioPO())).Wait();
+                _eventoTableDataGateway.Inserir(new EventoPO(ETipoEvento.USUARIO_INATIVADO, "USUARIO_INATIVADO", usuario.ToUsuarioPO())).Wait();
             });
 
             _unitOfWork.Commit();

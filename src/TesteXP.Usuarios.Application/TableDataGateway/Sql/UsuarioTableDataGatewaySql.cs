@@ -28,6 +28,15 @@ namespace TesteXP.Usuarios.Application.TableDataGateway.Sql
                 AND Id = @Id;
         ";
 
+        public const string CONSULTAR_POR_NOME = @"
+            SELECT 
+                * 
+            FROM 
+                Usuario 
+            WHERE 1=1
+                AND LOWER(Nome) = LOWER(@Nome);
+        ";
+
         public const string ATUALIZAR_STATUS = @"
             UPDATE 
                 Usuario

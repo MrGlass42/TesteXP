@@ -22,7 +22,6 @@ namespace TesteXP.Api
                 builder.ConfigurarSerilog();
                 builder.ConfigurarKeycloakAuth();
                 builder.ConfigurarAuthorize();
-                builder.ConfigurarApiClients();
                 builder.ConfigurarDependencias();
                 builder.CreateDatabase().Wait();
                 builder.ConfigurarCors(_nomePoliticaCors);
