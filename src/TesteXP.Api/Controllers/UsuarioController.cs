@@ -11,16 +11,16 @@ namespace TesteXP.Api.Controllers
     {
         private readonly ICadastrarUsuarioService _cadastrarUsuarioService;
         private readonly IConsultarUsuariosService _consultarUsuariosSevice;
-        private readonly IExcluirUsuarioService _excluirUsuarioService;
+        private readonly IInativarUsuarioService _inativarUsuarioService;
 
         public UsuariosController(
             ICadastrarUsuarioService cadastrarUsuarioService, 
             IConsultarUsuariosService consultarUsuariosSevice, 
-            IExcluirUsuarioService excluirUsuarioService)
+            IInativarUsuarioService inativarUsuarioService)
         {
             _cadastrarUsuarioService = cadastrarUsuarioService;
             _consultarUsuariosSevice = consultarUsuariosSevice;
-            _excluirUsuarioService = excluirUsuarioService;
+            _inativarUsuarioService = inativarUsuarioService;
         }
 
         [HttpPost]
@@ -35,11 +35,11 @@ namespace TesteXP.Api.Controllers
         // [Authorize("IsAdmin")]
         public async Task<IActionResult> Consultar() => Ok(await _consultarUsuariosSevice.Executar());
 
-        [HttpDelete("{id:int}")]
+        [HttpPatch("inativar/{id:int}")]
         // [Authorize("IsAdmin")]
-        public async Task<IActionResult> Excluir(int id)
+        public async Task<IActionResult> Inativar(int id)
         {
-            await _excluirUsuarioService.Processar(new ExcluirUsuarioRequest(id));
+            await _inativarUsuarioService.Processar(new ExcluirUsuarioRequest(id));
             return StatusCode(204);
         }
     }

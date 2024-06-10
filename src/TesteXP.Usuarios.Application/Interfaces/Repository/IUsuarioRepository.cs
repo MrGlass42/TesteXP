@@ -9,6 +9,6 @@ namespace TesteXP.Usuarios.Application.Interfaces
         public Task<Usuario> ConsultarPorId(int usuarioId);
         public Task<bool> CadastroPermitido(string email);
         public Task<Usuario> ConsultarPorEmail(string email);
-        public void Excluir(Usuario usuario);
+        public void Inativar(Usuario usuario);
     }
 }

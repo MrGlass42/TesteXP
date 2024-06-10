@@ -5,6 +5,7 @@ namespace TesteXP.ProdutosFinanceiros.Application.Interfaces
     public interface IProdutoFinanceiroRepository
     {
         Task<List<ProdutoFinanceiro>> ConsultarProdutosDisponiveisPraVenda();
+        Task<decimal> ConsultarValorAtualProduto(int produtoId);
         Task<ProdutoFinanceiro> ConsultarPorId(int id);
         Task Cadastrar(ProdutoFinanceiro produto);
         Task Atualizar(ProdutoFinanceiro produto);

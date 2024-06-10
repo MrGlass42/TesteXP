@@ -27,8 +27,8 @@ namespace TesteXP.Usuarios.Application
                 .AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             services
+                .AddScoped<IInativarUsuarioService, InativarUsuarioService>()
                 .AddScoped<ICadastrarUsuarioService, CadastrarUsuarioService>()
-                .AddScoped<IExcluirUsuarioService, ExcluirUsuarioService>()
                 .AddScoped<IConsultarUsuariosService, ConsultarUsuariosService>();
         }
     }

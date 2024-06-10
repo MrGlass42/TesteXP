@@ -1,3 +1,5 @@
+using TesteXP.ProdutosFinanceiros.Application.Models.Enum;
+
 namespace TesteXP.ProdutosFinanceiros.Application.Models.Entidades;
 
 public class ProdutoFinanceiro

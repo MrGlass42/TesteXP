@@ -1,5 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces;
+using TesteXP.ProdutosFinanceiros.Application.Interfaces.Repository;
+using TesteXP.ProdutosFinanceiros.Application.Interfaces.Services;
+using TesteXP.ProdutosFinanceiros.Application.Interfaces.TableDataGateway;
 using TesteXP.ProdutosFinanceiros.Application.Models.Requests;
 using TesteXP.ProdutosFinanceiros.Application.Repository;
 using TesteXP.ProdutosFinanceiros.Application.Services;
@@ -20,12 +23,20 @@ namespace TesteXP.ProdutosFinanceiros.Application
                 .AddScoped<ICreateDatabaseFinanceiroService, CreateDatabaseService>();
 
             services
+                .AddScoped<IExtratoTableDataGateway, ExtratoTableDataGateway>()
+                .AddScoped<IInvestidorTableDataGateway, InvestidorTableDataGateway>()
+                .AddScoped<IProdutoUsuarioTableDataGateway, ProdutoUsuarioTableDataGateway>()
+                .AddScoped<ISaldoTableDataGateway, SaldoTableDataGateway>()
+                .AddScoped<IVendaTableDataGateway, VendaTableDataGateway>()
                 .AddScoped<IProdutoFinanceiroTableDataGateway, ProdutoFinanceiroTableDataGateway>();
 
             services
+                .AddScoped<IInvestidorRepository, InvestidorRepository>()
+                .AddScoped<IOperacaoFinanceiraRepository, OperacaoFinanceiraRepository>()
                 .AddScoped<IProdutoFinanceiroRepository, ProdutoFinanceiroRepository>();
 
             services
+                .AddScoped<ICompraService, CompraService>()
                 .AddScoped<IAtivarProdutoService, AtivarProdutoService>()
                 .AddScoped<IAtualizarProdutoFinanceiroService, AtualizarProdutoFinanceiroService>()
                 .AddScoped<ICadastrarProdutoFinanceiroService, CadastrarProdutoFinanceiroService>()

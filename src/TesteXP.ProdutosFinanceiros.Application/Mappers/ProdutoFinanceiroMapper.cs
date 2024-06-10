@@ -1,5 +1,5 @@
-using TesteXP.ProdutosFinanceiros.Application.Models;
 using TesteXP.ProdutosFinanceiros.Application.Models.Entidades;
+using TesteXP.ProdutosFinanceiros.Application.Models.Enum;
 using TesteXP.ProdutosFinanceiros.Application.TableDataGateway.PersistenceObjects;
 
 namespace TesteXP.ProdutosFinanceiros.Application.Mappers;

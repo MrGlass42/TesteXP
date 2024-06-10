@@ -4,12 +4,12 @@ using TesteXP.Usuarios.Application.Models.Requests;
 
 namespace TesteXP.Usuarios.Application.Services
 {
-    public class ExcluirUsuarioService : IExcluirUsuarioService
+    public class InativarUsuarioService : IInativarUsuarioService
     {
         private readonly IUsuarioRepository _usuarioRepo;
         private readonly ICustomValidator<ExcluirUsuarioRequest> _validator;
 
-        public ExcluirUsuarioService(IUsuarioRepository usuarioRepo, ICustomValidator<ExcluirUsuarioRequest> validator)
+        public InativarUsuarioService(IUsuarioRepository usuarioRepo, ICustomValidator<ExcluirUsuarioRequest> validator)
         {
             _usuarioRepo = usuarioRepo;
             _validator = validator;
@@ -22,7 +22,7 @@ namespace TesteXP.Usuarios.Application.Services
             var usuario = await _usuarioRepo.ConsultarPorId(request.Id)
                 ?? throw new UsuarioNaoEncontradoException("usuário informado para excluir não existe.");
 
-            _usuarioRepo.Excluir(usuario);
+            _usuarioRepo.Inativar(usuario);
         }
     }
 }

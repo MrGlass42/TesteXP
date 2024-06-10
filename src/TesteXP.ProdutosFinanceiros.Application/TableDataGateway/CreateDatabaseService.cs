@@ -50,7 +50,8 @@ namespace TesteXP.ProdutosFinanceiros.Application.TableDataGateway
                                 Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                                 IdProdutoFinanceiro INTEGER NOT NULL,
                                 IdComprador INTEGER NOT NULL,
-                                IdVendedor INTEGER NOT NULL,
+                                IdVendedor INTEGER NULL,
+                                Valor FLOAT NOT NULL,
                                 DataVenda DATETIME NOT NULL,
                                 FOREIGN KEY (IdProdutoFinanceiro) REFERENCES ProdutoFinanceiro(Id),
                                 FOREIGN KEY (IdVendedor) REFERENCES Usuario(Id)

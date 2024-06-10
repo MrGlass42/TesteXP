@@ -1,6 +1,6 @@
 using TesteXP.ProdutosFinanceiros.Application.Models.Entidades;
 
-namespace TesteXP.ProdutosFinanceiros.Application.Models;
+namespace TesteXP.ProdutosFinanceiros.Application.Models.Response;
 
 public class ConsultarProdutosResponse
 {

@@ -32,11 +32,11 @@ namespace TesteXP.Usuarios.Application.Repository
 
         public async Task<Usuario> ConsultarPorId(int usuarioId) => (await _usuarioTableDataGateway.ConsultarPorId(usuarioId)).ToUsuarioEntidade();
 
-        public void Excluir(Usuario usuario)
+        public void Inativar(Usuario usuario)
         {
             _unitOfWork.AddDatabaseOperation(() =>
             {
-                _usuarioTableDataGateway.Excluir(usuario.Id).Wait();
+                _usuarioTableDataGateway.AtualizarStatus((int)EStatusUsuario.Inativo, usuario.Id).Wait();
                 _eventoTableDataGateway.Inserir(new EventoPO(ETipoEvento.USUARIO_EXCLUIDO, "USUARIO_EXCLUIDO", usuario.ToUsuarioPO())).Wait();
             });
 
