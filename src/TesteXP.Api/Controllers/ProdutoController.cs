@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces;
 using TesteXP.ProdutosFinanceiros.Application.Models.Requests;
@@ -33,7 +34,7 @@ namespace TesteXP.Api.Controllers
         }
 
         [HttpPost]
-        // [Authorize("IsAdmin")]
+        [Authorize("IsAdmin")]
         public async Task<IActionResult> Cadastrar(CadastrarProdutoFinanceiroRequest request)
         {
             await _cadastrarProdutoFinanceiroService.Executar(request);
@@ -41,7 +42,7 @@ namespace TesteXP.Api.Controllers
         }
 
         [HttpPut]
-        // [Authorize("IsAdmin")]
+        [Authorize("IsAdmin")]
         public async Task<IActionResult> Atualizar(AtualizarProdutoFinanceiroRequest request)
         {
             await _atualizarProdutoFinanceiroService.Atualizar(request);
@@ -49,15 +50,15 @@ namespace TesteXP.Api.Controllers
         }
 
         [HttpGet]
-        // [Authorize("IsAdmin")]
+        [Authorize("IsAdmin")]
         public async Task<IActionResult> Consultar() => Ok(await _consultarProdutosDisponiveisPraVenda.Consultar());
 
         [HttpGet("{id:int}")]
-        // [Authorize("IsAdmin")]
+        [Authorize("IsAdmin")]
         public async Task<IActionResult> Consultar(int id) => Ok(await _consultarProdutoPorIdService.ConsultarPorId(id));
 
         [HttpPatch("inativar/{id:int}")]
-        // [Authorize("IsAdmin")]
+        [Authorize("IsAdmin")]
         public async Task<IActionResult> Inativar(int id)
         {
             await _inativarProdutoService.Inativar(id);
@@ -65,7 +66,7 @@ namespace TesteXP.Api.Controllers
         }
 
         [HttpPatch("ativar/{id:int}")]
-        // [Authorize("IsAdmin")]
+        [Authorize("IsAdmin")]
         public async Task<IActionResult> Ativar(int id)
         {
             await _ativarProdutoService.Ativar(id);

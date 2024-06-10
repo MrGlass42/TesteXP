@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TesteXP.Usuarios.Application.Interfaces;
 using TesteXP.Usuarios.Application.Models.Requests;
@@ -24,7 +25,7 @@ namespace TesteXP.Api.Controllers
         }
 
         [HttpPost]
-        // [Authorize("IsAdmin")]
+        [Authorize("IsAdmin")]
         public async Task<IActionResult> Cadastrar(CadastrarUsuarioRequest request)
         {
             await _cadastrarUsuarioService.Executar(request);
@@ -32,11 +33,11 @@ namespace TesteXP.Api.Controllers
         }
 
         [HttpGet]
-        // [Authorize("IsAdmin")]
+        [Authorize("IsAdmin")]
         public async Task<IActionResult> Consultar() => Ok(await _consultarUsuariosSevice.Executar());
 
         [HttpPatch("inativar/{id:int}")]
-        // [Authorize("IsAdmin")]
+        [Authorize("IsAdmin")]
         public async Task<IActionResult> Inativar(int id)
         {
             await _inativarUsuarioService.Processar(new ExcluirUsuarioRequest(id));
