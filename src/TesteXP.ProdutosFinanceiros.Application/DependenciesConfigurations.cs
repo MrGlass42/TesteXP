@@ -36,6 +36,7 @@ namespace TesteXP.ProdutosFinanceiros.Application
                 .AddScoped<IProdutoFinanceiroRepository, ProdutoFinanceiroRepository>();
 
             services
+                .AddScoped<IAlimentarExtratoFake, AlimentarExtratoFake>()
                 .AddScoped<ICompraService, CompraService>()
                 .AddScoped<IAtivarProdutoService, AtivarProdutoService>()
                 .AddScoped<IExtratoRecenteService, ExtratoRecenteService>()  

@@ -41,7 +41,7 @@ public static class ExtratoTableDataGatewaySql
                 ON ext.IdProdutoFinanceiro = pru.IdProdutoFinanceiro
         WHERE 1=1
             AND pru.IdUsuario = @IdUsuario
-        ORDER BY 1 DESC
+        ORDER BY ext.Id DESC
         LIMIT 20;
     ";
 

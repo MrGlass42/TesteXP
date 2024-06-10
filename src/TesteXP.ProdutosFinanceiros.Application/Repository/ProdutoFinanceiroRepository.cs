@@ -50,7 +50,7 @@ public class ProdutoFinanceiroRepository : IProdutoFinanceiroRepository
         var registro = await _extratoTableDataGateway.ConsultarUltimoRegistro(produtoId);
 
         if(registro is not null)
-            return registro.ValorAnterior * registro.Rendimento;
+            return registro.ValorAnterior + (registro.ValorAnterior * registro.Rendimento);
         else 
         {
             var produto = await ConsultarPorId(produtoId);
