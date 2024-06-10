@@ -3,14 +3,15 @@ namespace TesteXP.ProdutosFinanceiros.Application.TableDataGateway.Sql;
 public static class SaldoTableDataGatewaySql
 {
     public static readonly string CADASTRAR = @"
-        INSERT INTO SALDO
+        INSERT INTO Saldo
             (Valor, IdUsuario)
         VALUES
             (@Valor, @IdUsuario);
+        SELECT LAST_INSERT_ID(); 
     ";
 
     public static readonly string ATUALIZAR_SALDO = @"
-        UPDATE SALDO
+        UPDATE Saldo
             SET Valor = @Valor
         WHERE 1=1
             AND Id = @Id;

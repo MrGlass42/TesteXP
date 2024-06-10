@@ -14,7 +14,7 @@ public class ProdutoUsuarioTableDataGateway : BaseTableDataGateway, IProdutoUsua
         await ExecutarConsultaComUmResultado<ProdutoUsuarioPO>(ProdutoUsuarioTableDataGatewaySql.CONSULTAR_POR_PRODUTO_ID, new {IdProdutoFinanceiro = produtoId});
 
     public async Task Desvincular(int idProdutoFinanceiro, int idUsuario) =>
-        await ExecutarComando(ProdutoUsuarioTableDataGatewaySql.DESVINCULAR, new {IdProdutoFinanceiro = idProdutoFinanceiro, IdUsuario = idProdutoFinanceiro });
+        await ExecutarComando(ProdutoUsuarioTableDataGatewaySql.DESVINCULAR, new {IdProdutoFinanceiro = idProdutoFinanceiro, IdUsuario = idUsuario });
 
     public async Task Vincular(ProdutoUsuarioPO produtoUsuario) =>
         await ExecutarComando(ProdutoUsuarioTableDataGatewaySql.VINCULAR, produtoUsuario);

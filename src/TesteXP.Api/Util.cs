@@ -1,4 +1,5 @@
 using System.IdentityModel.Tokens.Jwt;
+using TesteXP.Api.Exceptions;
 
 namespace TesteXP.Api
 {
@@ -19,7 +20,7 @@ namespace TesteXP.Api
             var emailClaim = jwtSecurityToken.Claims.First(claim => claim.Type == "email");
 
             if (emailClaim is null || emailClaim.Value.IsValidEmail() is false)
-                throw new Exception("email recebido no token não é um email válido");
+                throw new EmailInvalidoException("email recebido no token não é um email válido");
 
             return emailClaim.Value;
         }

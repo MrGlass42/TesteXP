@@ -25,7 +25,7 @@ namespace TesteXP.Api.Controllers
         }
 
         [HttpPost]
-        [Authorize("IsAdmin")]
+        // [Authorize("IsAdmin")]
         public async Task<IActionResult> Cadastrar(CadastrarUsuarioRequest request)
         {
             await _cadastrarUsuarioService.Executar(request);

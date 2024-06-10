@@ -2,6 +2,7 @@ using System.Net;
 using System.Text.Json;
 using FluentValidation;
 using Serilog;
+using TesteXP.Api.Exceptions;
 using TesteXP.Usuarios.Application.Exceptions;
 
 namespace TesteXP.Api.Middlewares
@@ -27,7 +28,7 @@ namespace TesteXP.Api.Middlewares
         {
             var code = HttpStatusCode.InternalServerError;
 
-            if (exception is ValidationException || IsUserAppException(exception))
+            if (exception is ValidationException || exception is EmailInvalidoException || IsUserAppException(exception))
                 code = HttpStatusCode.BadRequest;
 
             if(code == HttpStatusCode.InternalServerError)

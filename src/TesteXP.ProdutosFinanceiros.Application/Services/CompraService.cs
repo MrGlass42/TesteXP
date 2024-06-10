@@ -1,3 +1,4 @@
+using Serilog;
 using TesteXP.ProdutosFinanceiros.Application.Exceptions;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces.Repository;
@@ -29,7 +30,7 @@ public class CompraService : ICompraService
             ?? throw new InvestidorNaoEncontradoException("não foi possível identificar o usuário do comprador");
 
         var produtoFinanceiro = await _produtoFinanceiroRepository.ConsultarPorId(produtoFinanceiroId)
-            ?? throw new ProdutoFinanceiroNaoEncontradoException("não foi possível identificar o produto para compra");
+            ?? throw new ProdutoFinanceiroNaoEncontradoException($"não foi possível identificar o produto para compra, produtoId: {produtoFinanceiroId}");
             
         if(produtoFinanceiro.DisponivelParaVenda is false)
             throw new ProdutoNaoDisponivelParaVendaException("o produto em questão não está disponível para venda");
@@ -37,6 +38,9 @@ public class CompraService : ICompraService
         var valorAtualProduto = await _produtoFinanceiroRepository.ConsultarValorAtualProduto(produtoFinanceiroId);
 
         var vendedor = await _investidorRepository.ConsultarPorProdutoId(produtoFinanceiroId);
+
+        if(vendedor is not null && vendedor.Id == comprador.Id)
+            throw new CompradorJaPossuiProdutoException("O comprador ja possui o produto");
 
         comprador.DebitarSaldo(valorAtualProduto);
 

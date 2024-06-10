@@ -13,7 +13,7 @@ public class SaldoTableDataGateway : BaseTableDataGateway, ISaldoTableDataGatewa
         await ExecutarComando(SaldoTableDataGatewaySql.ATUALIZAR_SALDO, new { Valor = valor, Id = saldoId });
 
     public async Task<SaldoPO?> ConsultarSaldoPorUsuario(int idUsuario) =>
-        await ExecutarConsultaComUmResultado<SaldoPO>(SaldoTableDataGatewaySql.CONSULTAR_POR_ID_USUARIO);
+        await ExecutarConsultaComUmResultado<SaldoPO>(SaldoTableDataGatewaySql.CONSULTAR_POR_ID_USUARIO, new { IdUsuario = idUsuario });
 
     public async Task Iniciar(SaldoPO saldo) =>
         saldo.Id = await ExecutarComando(SaldoTableDataGatewaySql.CADASTRAR, saldo);
