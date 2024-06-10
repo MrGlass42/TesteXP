@@ -1,6 +1,7 @@
 using TesteXP.ProdutosFinanceiros.Application.Interfaces;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces.TableDataGateway;
 using TesteXP.ProdutosFinanceiros.Application.Mappers;
+using TesteXP.ProdutosFinanceiros.Application.Models.DTO;
 using TesteXP.ProdutosFinanceiros.Application.Models.Entidades;
 using TesteXP.ProdutosFinanceiros.Application.Models.Enum;
 
@@ -37,6 +38,12 @@ public class ProdutoFinanceiroRepository : IProdutoFinanceiroRepository
 
     public async Task<ProdutoFinanceiro> ConsultarPorId(int id) =>
         (await _produtoFinanceiroTableDataGateway.ConsultarPorId(id)).ToProdutoFinanceiroEntidade();
+
+    public async Task<List<ProdutoFinanceiro>> ConsultarProdutosDeUmInvestidor(int usuarioId) =>
+        (await _produtoFinanceiroTableDataGateway.ConsultarProdutosDeUmUsuario(usuarioId)).ToProdutoFinanceiroEntidade();
+
+    public async Task<List<ExtratoDTO>> ConsultarExtratoRecenteDoProduto(int usuarioId) =>
+        await _extratoTableDataGateway.ConsultarExtratoRecente(usuarioId);
 
     public async Task<decimal> ConsultarValorAtualProduto(int produtoId)
     {

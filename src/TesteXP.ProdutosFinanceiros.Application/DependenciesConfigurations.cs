@@ -38,6 +38,7 @@ namespace TesteXP.ProdutosFinanceiros.Application
             services
                 .AddScoped<ICompraService, CompraService>()
                 .AddScoped<IAtivarProdutoService, AtivarProdutoService>()
+                .AddScoped<IExtratoRecenteService, ExtratoRecenteService>()  
                 .AddScoped<IAtualizarProdutoFinanceiroService, AtualizarProdutoFinanceiroService>()
                 .AddScoped<ICadastrarProdutoFinanceiroService, CadastrarProdutoFinanceiroService>()
                 .AddScoped<IConsultarProdutoPorIdService, ConsultarProdutoIdService>()

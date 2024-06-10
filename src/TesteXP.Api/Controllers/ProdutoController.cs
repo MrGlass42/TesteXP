@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces;
+using TesteXP.ProdutosFinanceiros.Application.Interfaces.Services;
 using TesteXP.ProdutosFinanceiros.Application.Models.Requests;
 
 
@@ -16,14 +17,16 @@ namespace TesteXP.Api.Controllers
         private readonly IConsultarProdutoPorIdService _consultarProdutoPorIdService;
         private readonly IConsultarProdutosDisponiveisPraVenda _consultarProdutosDisponiveisPraVenda;
         private readonly IInativarProdutoService _inativarProdutoService;
+        private readonly IExtratoRecenteService _extratoRecenteService;
 
         public ProdutoController(
-            IAtivarProdutoService ativarProdutoService, 
-            IAtualizarProdutoFinanceiroService atualizarProdutoFinanceiroService, 
-            ICadastrarProdutoFinanceiroService cadastrarProdutoFinanceiroService, 
-            IConsultarProdutoPorIdService consultarProdutoPorIdService, 
-            IConsultarProdutosDisponiveisPraVenda consultarProdutosDisponiveisPraVenda, 
-            IInativarProdutoService inativarProdutoService)
+            IAtivarProdutoService ativarProdutoService,
+            IAtualizarProdutoFinanceiroService atualizarProdutoFinanceiroService,
+            ICadastrarProdutoFinanceiroService cadastrarProdutoFinanceiroService,
+            IConsultarProdutoPorIdService consultarProdutoPorIdService,
+            IConsultarProdutosDisponiveisPraVenda consultarProdutosDisponiveisPraVenda,
+            IInativarProdutoService inativarProdutoService,
+            IExtratoRecenteService extratoRecenteService)
         {
             _ativarProdutoService = ativarProdutoService;
             _atualizarProdutoFinanceiroService = atualizarProdutoFinanceiroService;
@@ -31,6 +34,7 @@ namespace TesteXP.Api.Controllers
             _consultarProdutoPorIdService = consultarProdutoPorIdService;
             _consultarProdutosDisponiveisPraVenda = consultarProdutosDisponiveisPraVenda;
             _inativarProdutoService = inativarProdutoService;
+            _extratoRecenteService = extratoRecenteService;
         }
 
         [HttpPost]
@@ -72,5 +76,15 @@ namespace TesteXP.Api.Controllers
             await _ativarProdutoService.Ativar(id);
             return Ok();
         }
+
+        [HttpGet("extrato")]
+        [Authorize("TodosPodemAcessar")]
+        public async Task<IActionResult> Extrato() 
+        {
+            string email = HttpContext.GetEmailFromAccessToken();
+            var extrato = await _extratoRecenteService.Consultar(email);
+
+            return Ok(extrato);
+        } 
     }
 }

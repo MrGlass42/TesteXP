@@ -46,5 +46,17 @@ namespace TesteXP.ProdutosFinanceiros.Application.TableDataGateway.Sql
                 AND Status = 0
                 AND DisponivelParaVenda = TRUE;
         ";
+
+        public static readonly string CONSULTAR_PRODUTOS_DE_UM_USUARIO = @"
+            SELECT
+                prd.*
+            FROM 
+                ProdutoFinanceiro prd
+            JOIN 
+                ProdutoUsuario pru
+                    ON pru.IdProdutoFinanceiro = prd.Id
+            WHERE 1=1
+                AND pru.IdUsuario = @IdUsuario;
+        ";
     }
 }

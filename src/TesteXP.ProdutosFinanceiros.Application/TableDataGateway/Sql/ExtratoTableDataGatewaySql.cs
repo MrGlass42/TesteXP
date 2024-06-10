@@ -23,6 +23,28 @@ public static class ExtratoTableDataGatewaySql
         ORDER BY 1;
     ";
 
+    public static readonly string CONSULTAR_EXTRATO_RECENTE = @"
+        SELECT
+            prd.Id as ProdutoId,
+            prd.Nome as NomeProduto,
+            prd.Valor as ValorInicialProduto,
+            ext.ValorAnterior,
+            ext.Rendimento,
+            ext.DataReferencia
+        FROM 
+            ProdutoFinanceiro prd
+        JOIN 
+            ProdutoUsuario pru
+                ON pru.IdProdutoFinanceiro = prd.Id
+        JOIN
+            Extrato ext
+                ON ext.IdProdutoFinanceiro = pru.IdProdutoFinanceiro
+        WHERE 1=1
+            AND pru.IdUsuario = @IdUsuario
+        ORDER BY 1 DESC
+        LIMIT 20;
+    ";
+
     public static readonly string INSERIR = @"
         INSERT INTO Extrato
             (IdProdutoFinanceiro, ValorAnterior, Rendimento, DataReferencia)
