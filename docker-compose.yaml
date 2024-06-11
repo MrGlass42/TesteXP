@@ -1,12 +1,29 @@
 version: "3.9"
 
 services:
-  mysql:
-    container_name: mysql
-    image: mysql
+  testexp:
+    depends_on:
+      - keycloak
     restart: unless-stopped
+    container_name: testexp
+    network_mode: "host"
+    build:
+      dockerfile: TesteXP.Dockerfile
+      context: ./
+  
+  # rw_email:
+  #   container_name: rw_email
+  #   network_mode: "host"
+  #   build:
+  #     dockerfile: RW_Email.Dockerfile
+  #     context: ./
+  #   restart: unless-stopped
+
+  mysql_xp:
+    container_name: mysql_xp
+    image: mysql
     volumes:
-      - dbdata:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
     environment:
@@ -15,10 +32,9 @@ services:
   keycloak:
       container_name: keycloak
       image: quay.io/keycloak/keycloak:legacy
-      restart: unless-stopped
       environment:
         DB_VENDOR: MYSQL
-        DB_ADDR: mysql
+        DB_ADDR: mysql_xp
         DB_DATABASE: keycloak
         DB_USER: root
         DB_PASSWORD: root!
@@ -26,13 +42,12 @@ services:
         KEYCLOAK_PASSWORD: admin
         PROXY_ADDRESS_FORWARDING: 'true'
       depends_on:
-        - mysql
+        - mysql_xp
       ports:
         - "4000:8080"
-
-volumes:
-  dbdata:
-    external: false
+      volumes:
+      - ./wait-for-it.sh:/wait-for-it.sh
+      entrypoint: ["/wait-for-it.sh", "mysql_xp:3306", "--", "sh", "-c", "/opt/jboss/tools/docker-entrypoint.sh"]
 
 networks: 
   default: 
