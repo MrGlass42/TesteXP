@@ -4,6 +4,7 @@ namespace TesteXP.ProdutosFinanceiros.Application.Interfaces
 {
     public interface IProdutoFinanceiroTableDataGateway
     {
+        Task<List<ProdutoFinanceiroPO>> ConsultarProdutosProximosDoVencimento(int qtdeDias);
         Task<List<ProdutoFinanceiroPO>> ConsultarProdutosDeUmUsuario(int usuarioId);
         Task<List<ProdutoFinanceiroPO>> ConsultarProdutosDisponiveisPraVenda();
         Task<ProdutoFinanceiroPO?> ConsultarPorId(int id);

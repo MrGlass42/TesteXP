@@ -8,6 +8,7 @@ using TesteXP.Infra;
 using TesteXP.Infra.Interfaces;
 using TesteXP.ProdutosFinanceiros.Application;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces;
+using TesteXP.ProdutosFinanceiros.Application.Interfaces.Jobs;
 using TesteXP.Usuarios.Application;
 using TesteXP.Usuarios.Application.Interfaces;
 using TesteXP.Usuarios.Application.Interfaces.Jobs;
@@ -107,15 +108,18 @@ namespace TesteXP.Api.Configurations
         {
             var serviceProvider = builder.Services.BuildServiceProvider();
             var processadorEventosJob = serviceProvider.GetService<IProcessadorEventosJob>();
+            var emailJob = serviceProvider.GetService<IEmailProdutosAVencerJob>();
 
             if (processadorEventosJob is null)
-                throw new NullReferenceException("não foi possível recuperar um objeto de serviço para o job.");
+                throw new NullReferenceException("não foi possível recuperar um objeto de serviço para o job IProcessadorEventosJob.");
+
+            if (emailJob is null)
+                throw new NullReferenceException("não foi possível recuperar um objeto de serviço para o job EmailProdutosAVencerJob.");
 
             JobManager.Initialize();
 
-            JobManager.AddJob(() =>
-                processadorEventosJob.Execute(),
-                s => s.NonReentrant().ToRunEvery(10).Seconds());
+            JobManager.AddJob(processadorEventosJob.Execute, s => s.NonReentrant().ToRunEvery(10).Seconds());
+            JobManager.AddJob(emailJob.Execute, s => s.NonReentrant().ToRunEvery(1).Days());
         }
 
         public static async Task CreateDatabase(this WebApplicationBuilder builder)

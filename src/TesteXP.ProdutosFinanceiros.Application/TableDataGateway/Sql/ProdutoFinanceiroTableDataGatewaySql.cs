@@ -58,5 +58,15 @@ namespace TesteXP.ProdutosFinanceiros.Application.TableDataGateway.Sql
             WHERE 1=1
                 AND pru.IdUsuario = @IdUsuario;
         ";
+
+        public static readonly string CONSULTAR_PRODUTOS_PROXIMOS_DO_VENCIMENTO = @"
+            SELECT
+                *
+            FROM 
+                ProdutoFinanceiro
+            WHERE 1=1
+                AND DataVencimento BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL @QtdeDias DAY);
+        ";
+
     }
 }

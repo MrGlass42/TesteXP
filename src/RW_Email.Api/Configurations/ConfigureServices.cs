@@ -13,7 +13,13 @@ public static class ConfigureServices
 {
     public static void ConfigurarSendGrid(this WebApplicationBuilder builder)
     {
-        builder.Services.AddSendGrid(options => { options.ApiKey = builder.Configuration["ChaveSendGrid"]; });
+        string chave = builder.Configuration["ChaveSendGrid"]!;
+
+        if (string.IsNullOrEmpty(chave))
+            throw new Exception("config ChaveSendGrid não encontrada");
+
+
+        builder.Services.AddSendGrid(options => { options.ApiKey = chave; });
     }
 
     public static void ConfigurarSerilog(this WebApplicationBuilder builder)

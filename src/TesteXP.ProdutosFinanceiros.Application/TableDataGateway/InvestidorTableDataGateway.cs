@@ -15,4 +15,8 @@ public class InvestidorTableDataGateway : BaseTableDataGateway, IInvestidorTable
 
     public async Task<UsuarioPO?> ConsultarInvestidorPorId(int id) =>
         await ExecutarConsultaComUmResultado<UsuarioPO>(InvestidorTableDataGatewaySql.CONSULTAR_POR_ID, new { Id = id });
+
+    public async Task<List<UsuarioPO>> ConsultarPorAdministradores() =>
+        await ExecutarConsultaComResultadoLista<UsuarioPO>(InvestidorTableDataGatewaySql.CONSULTAR_ADMINS);
+
 }

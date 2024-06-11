@@ -1,8 +1,12 @@
 using Microsoft.Extensions.DependencyInjection;
+using TesteXP.ProdutosFinanceiros.Application.ApiClients;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces;
+using TesteXP.ProdutosFinanceiros.Application.Interfaces.ApiClients;
+using TesteXP.ProdutosFinanceiros.Application.Interfaces.Jobs;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces.Repository;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces.Services;
 using TesteXP.ProdutosFinanceiros.Application.Interfaces.TableDataGateway;
+using TesteXP.ProdutosFinanceiros.Application.Jobs;
 using TesteXP.ProdutosFinanceiros.Application.Models.Requests;
 using TesteXP.ProdutosFinanceiros.Application.Repository;
 using TesteXP.ProdutosFinanceiros.Application.Services;
@@ -15,6 +19,9 @@ namespace TesteXP.ProdutosFinanceiros.Application
     {
         public static void ConfigurarDependenciasProdutoFinanceiro(this IServiceCollection services)
         {
+            services
+                .AddTransient<IEmailHttpClient, EmailHttpClient>();
+
             services
                 .AddSingleton<ICustomValidator<CadastrarProdutoFinanceiroRequest>, CadastrarProdutoFinanceiroRequestValidator>()
                 .AddSingleton<ICustomValidator<AtualizarProdutoFinanceiroRequest>, AtualizarProdutoFinanceiroRequestValidator>();
@@ -47,6 +54,9 @@ namespace TesteXP.ProdutosFinanceiros.Application
                 .AddScoped<IConsultarProdutoPorIdService, ConsultarProdutoIdService>()
                 .AddScoped<IConsultarProdutosDisponiveisPraVenda, ConsultarProdutosDisponiveisPraVenda>()
                 .AddScoped<IInativarProdutoService, InativarProdutoService>();
+
+            services
+                .AddTransient<IEmailProdutosAVencerJob, EmailProdutosAVencerJob>();
         }
     }
 }
