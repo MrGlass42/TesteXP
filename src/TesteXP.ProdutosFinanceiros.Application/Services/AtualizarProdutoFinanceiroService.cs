@@ -26,7 +26,7 @@ namespace TesteXP.ProdutosFinanceiros.Application.Services
                 DisponivelParaVenda = request.DisponivelParaVenda,
                 Nome = request.Nome,
                 Status = request.Status,
-                Valor = request.Valor,
+                ValorInicial = request.Valor,
                 RendimentoDiario = request.RendimentoDiario
             };
             

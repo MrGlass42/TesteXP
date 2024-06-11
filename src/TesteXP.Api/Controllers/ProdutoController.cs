@@ -20,17 +20,19 @@ namespace TesteXP.Api.Controllers
         private readonly IExtratoRecenteService _extratoRecenteService;
         private readonly IConsultarProdutosPorInvestidor _consultarProdutosPorInvestidor;
         private readonly IAtualizarDisponivelPraVenda _atualizarDisponivelPraVenda;
+        private readonly IConsultarTodosOsProdutos _consultarTodosOsProdutos;
 
         public ProdutoController(
-            IAtivarProdutoService ativarProdutoService, 
-            IAtualizarProdutoFinanceiroService atualizarProdutoFinanceiroService, 
-            ICadastrarProdutoFinanceiroService cadastrarProdutoFinanceiroService, 
-            IConsultarProdutoPorIdService consultarProdutoPorIdService, 
+            IAtivarProdutoService ativarProdutoService,
+            IAtualizarProdutoFinanceiroService atualizarProdutoFinanceiroService,
+            ICadastrarProdutoFinanceiroService cadastrarProdutoFinanceiroService,
+            IConsultarProdutoPorIdService consultarProdutoPorIdService,
             IConsultarProdutosDisponiveisPraVenda consultarProdutosDisponiveisPraVenda,
-            IInativarProdutoService inativarProdutoService, 
-            IExtratoRecenteService extratoRecenteService, 
-            IConsultarProdutosPorInvestidor consultarProdutosPorInvestidor, 
-            IAtualizarDisponivelPraVenda atualizarDisponivelPraVenda)
+            IInativarProdutoService inativarProdutoService,
+            IExtratoRecenteService extratoRecenteService,
+            IConsultarProdutosPorInvestidor consultarProdutosPorInvestidor,
+            IAtualizarDisponivelPraVenda atualizarDisponivelPraVenda,
+            IConsultarTodosOsProdutos consultarTodosOsProdutos)
         {
             _ativarProdutoService = ativarProdutoService;
             _atualizarProdutoFinanceiroService = atualizarProdutoFinanceiroService;
@@ -41,6 +43,7 @@ namespace TesteXP.Api.Controllers
             _extratoRecenteService = extratoRecenteService;
             _consultarProdutosPorInvestidor = consultarProdutosPorInvestidor;
             _atualizarDisponivelPraVenda = atualizarDisponivelPraVenda;
+            _consultarTodosOsProdutos = consultarTodosOsProdutos;
         }
 
         [HttpPost]
@@ -51,6 +54,10 @@ namespace TesteXP.Api.Controllers
             return StatusCode(201);
         }
 
+        [HttpGet("todos")]
+        [Authorize("IsAdmin")]
+        public async Task<IActionResult> ConsultarTodosOsProdutos() => Ok(await _consultarTodosOsProdutos.Consultar());
+
         [HttpPut]
         [Authorize("IsAdmin")]
         public async Task<IActionResult> Atualizar(AtualizarProdutoFinanceiroRequest request)
@@ -58,10 +65,6 @@ namespace TesteXP.Api.Controllers
             await _atualizarProdutoFinanceiroService.Atualizar(request);
             return Ok();
         }
-
-        [HttpGet]
-        [Authorize("IsAdmin")]
-        public async Task<IActionResult> Consultar() => Ok(await _consultarProdutosDisponiveisPraVenda.Consultar());
 
         [HttpGet("{id:int}")]
         [Authorize("IsAdmin")]
@@ -112,5 +115,9 @@ namespace TesteXP.Api.Controllers
 
             return Ok();
         }
+
+        [HttpGet]
+        [Authorize("TodosPodemAcessar")]
+        public async Task<IActionResult> Consultar() => Ok(await _consultarProdutosDisponiveisPraVenda.Consultar());
     }
 }

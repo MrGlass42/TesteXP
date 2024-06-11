@@ -47,6 +47,14 @@ namespace TesteXP.ProdutosFinanceiros.Application.TableDataGateway.Sql
                 AND DisponivelParaVenda = TRUE;
         ";
 
+        public static readonly string CONSULTAR_TODOS_PRODUTOS = @"
+            SELECT
+                *
+            FROM 
+                ProdutoFinanceiro
+            WHERE 1=1;
+        ";
+
         public static readonly string CONSULTAR_PRODUTOS_DE_UM_USUARIO = @"
             SELECT
                 prd.*

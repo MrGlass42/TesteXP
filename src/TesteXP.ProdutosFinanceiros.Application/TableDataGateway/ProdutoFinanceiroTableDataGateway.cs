@@ -32,5 +32,8 @@ namespace TesteXP.ProdutosFinanceiros.Application.TableDataGateway
         public async Task<List<ProdutoFinanceiroPO>> ConsultarProdutosProximosDoVencimento(int qtdeDias) =>
             await ExecutarConsultaComResultadoLista<ProdutoFinanceiroPO>(ProdutoFinanceiroTableDataGatewaySql
                 .CONSULTAR_PRODUTOS_PROXIMOS_DO_VENCIMENTO, new {QtdeDias = qtdeDias});
+
+        public async Task<List<ProdutoFinanceiroPO>> ConsultarTodosOsProdutos()=>
+            await ExecutarConsultaComResultadoLista<ProdutoFinanceiroPO>(ProdutoFinanceiroTableDataGatewaySql.CONSULTAR_TODOS_PRODUTOS);
     }
 }

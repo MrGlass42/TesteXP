@@ -17,7 +17,7 @@ public class AlimentarExtratoFake : IAlimentarExtratoFake
 
     public async Task Alimentar()
     {
-        var produtos = await _produtoFinanceiroRepository.ConsultarProdutosDisponiveisPraVenda();
+        var produtos = await _produtoFinanceiroRepository.ConsultarTodosOsProdutos();
 
         foreach (var prd in produtos)
         {

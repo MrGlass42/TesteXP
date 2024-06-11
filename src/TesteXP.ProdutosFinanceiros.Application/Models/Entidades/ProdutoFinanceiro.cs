@@ -4,15 +4,15 @@ namespace TesteXP.ProdutosFinanceiros.Application.Models.Entidades;
 
 public class ProdutoFinanceiro
 {
-    public ProdutoFinanceiro() {}
-    public ProdutoFinanceiro(string nome, decimal valor,decimal rendimentoDiario, DateTime dataVencimento)
+    public ProdutoFinanceiro() { }
+    public ProdutoFinanceiro(string nome, decimal valorInicial, decimal rendimentoDiario, DateTime dataVencimento)
     {
         RendimentoDiario = rendimentoDiario;
         DataVencimento = dataVencimento;
         Status = EStatusProduto.Ativo;
         DataCadastro = DateTime.Now;
         DisponivelParaVenda = true;
-        Valor = valor;
+        ValorInicial = valorInicial;
         Nome = nome;
     }
 
@@ -20,7 +20,8 @@ public class ProdutoFinanceiro
     public int Id { get; set; }
     public EStatusProduto Status { get; set; }
     public string Nome { get; set; }
-    public decimal Valor { get; set; }
+    public decimal ValorInicial { get; set; }
+    public decimal ValorAtual { get; set; }
     public bool DisponivelParaVenda { get; set; }
     public decimal RendimentoDiario { get; set; }
     public DateTime DataCadastro { get; set; }

@@ -12,6 +12,13 @@ namespace TesteXP.ProdutosFinanceiros.Application.Services
             _produtoFinanceiroRepository = produtoFinanceiroRepository;
         }
 
-        public async Task<List<ProdutoFinanceiro>> Consultar() => await _produtoFinanceiroRepository.ConsultarProdutosDisponiveisPraVenda();
+        public async Task<List<ProdutoFinanceiro>> Consultar() 
+        {
+            var produtos = await _produtoFinanceiroRepository.ConsultarProdutosDisponiveisPraVenda();
+            foreach (var prd in produtos)
+                prd.ValorAtual = await _produtoFinanceiroRepository.ConsultarValorAtualProduto(prd.Id);
+
+            return produtos;
+        }        
     }
 }

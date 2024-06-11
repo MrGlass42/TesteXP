@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "6c8b7bec-9977-4630-b14c-9b0fe01cdd45",
+		"name": "Teste - XP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10456377"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Tipo\": 1,\r\n    \"Nome\": \"Nickelbeck\",\r\n    \"Senha\": \"123\",\r\n    \"Email\": \"teste@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/inativar/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"inativar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produtos Financeiros",
+			"item": [
+				{
+					"name": "Atualizar Disponivel Pra venda",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/Produto/disponivel/true/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto",
+								"disponivel",
+								"true",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inativar Produto",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Produto/inativar/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto",
+								"inativar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar Produto",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Produto/ativar/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto",
+								"ativar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Produto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nome\": \"FFYTr0G 2\",\r\n    \"Valor\": 700,\r\n    \"RendimentoDiario\": 0.50,\r\n    \"DataVencimento\": \"2024-06-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/Produto",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": 2,\r\n    \"Status\": 0,\r\n    \"Nome\": \"FFYTr0G 2\",\r\n    \"Valor\": 700,\r\n    \"RendimentoDiario\": 0.50,\r\n    \"DataVencimento\": \"2024-06-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/Produto",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Produtos Disponiveis para venda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Produto",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Produto Por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Produto/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Produto/todos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Operacoes",
+			"item": [
+				{
+					"name": "Alimentar Extrato (FAKE)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Operacao/fake",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Operacao",
+								"fake"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Operacao/comprar/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Operacao",
+								"comprar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Extrato Recente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Produto/extrato",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto",
+								"extrato"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Produtos Por investidor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Produto/meus_produtos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Produto",
+								"meus_produtos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Keycloak",
+			"item": [
+				{
+					"name": "GetToken",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "pedrogomes980@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "xp-app",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{keycloak_base_url}}/auth/realms/xp/protocol/openid-connect/token",
+							"host": [
+								"{{keycloak_base_url}}"
+							],
+							"path": [
+								"auth",
+								"realms",
+								"xp",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EmailApp",
+			"item": [
+				{
+					"name": "Enviar Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Emails\": [\r\n        \"pedrogomes980@gmail.com\"\r\n    ],\r\n    \"Produtos\": [\r\n        {\"Nome\": \"Produto Teste\", \"DataVencimento\": \"2024-06-11\"}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{email_app_url}}/Email",
+							"host": [
+								"{{email_app_url}}"
+							],
+							"path": [
+								"Email"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BEARER_TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"var authServiceUrl = pm.collectionVariables.get('keycloak_base_url');\r",
+					"\r",
+					"pm.sendRequest({\r",
+					"        url: authServiceUrl + '/auth/realms/xp/protocol/openid-connect/token',\r",
+					"        method: 'POST',\r",
+					"        header: 'Content-Type:application/x-www-form-urlencoded',\r",
+					"        body: {\r",
+					"            mode: 'urlencoded',\r",
+					"            urlencoded: [\r",
+					"                    { key: \"grant_type\", value: 'password' },\r",
+					"                    { key: \"client_id\", value: \"xp-app\" },\r",
+					"                    { key: \"username\", value: pm.collectionVariables.get(\"keycloak_user\") },\r",
+					"                    { key: \"password\", value: pm.collectionVariables.get(\"keycloak_password\") },\r",
+					"            ]\r",
+					"        }\r",
+					"    }, (err, res) => pm.collectionVariables.set(\"BEARER_TOKEN\", res.json().access_token)\r",
+					");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "keycloak_base_url",
+			"value": "http://localhost:4000",
+			"type": "string"
+		},
+		{
+			"key": "BEARER_TOKEN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "keycloak_user",
+			"value": "pedrogomes980@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "keycloak_password",
+			"value": "123",
+			"type": "string"
+		},
+		{
+			"key": "email_app_url",
+			"value": "http://localhost:3001",
+			"type": "string"
+		}
+	]
+}

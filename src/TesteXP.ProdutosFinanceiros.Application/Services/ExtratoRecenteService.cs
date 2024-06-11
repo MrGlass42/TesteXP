@@ -55,7 +55,7 @@ public class ExtratoRecenteService : IExtratoRecenteService
             if (extratoRecente.Any())
             {
                 decimal valorInicial = ultimoRegistroExtrato.ValorInicialProduto;
-                decimal valorAtual = valorInicial + (ultimoRegistroExtrato.ValorAnterior * ultimoRegistroExtrato.Rendimento);
+                decimal valorAtual = ultimoRegistroExtrato.ValorAnterior + (ultimoRegistroExtrato.ValorAnterior * ultimoRegistroExtrato.Rendimento);
 
                 var rendimento = ((valorAtual / valorInicial) -1) * 100;
 

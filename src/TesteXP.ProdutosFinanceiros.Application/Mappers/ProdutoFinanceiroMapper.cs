@@ -20,7 +20,7 @@ public static class ProdutoFinanceiroMapper
             Nome = po.Nome,
             RendimentoDiario = po.RendimentoDiario,
             Status = (EStatusProduto)po.Status,
-            Valor = po.Valor
+            ValorInicial = po.Valor
         };
     }
 
@@ -41,7 +41,7 @@ public static class ProdutoFinanceiroMapper
             Nome = ent.Nome,
             RendimentoDiario = ent.RendimentoDiario,
             Status = (int)ent.Status,
-            Valor = ent.Valor
+            Valor = ent.ValorInicial
         };
     }
 

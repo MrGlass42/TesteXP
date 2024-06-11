@@ -42,6 +42,9 @@ public class ProdutoFinanceiroRepository : IProdutoFinanceiroRepository
     public async Task<List<ProdutoFinanceiro>> ConsultarProdutosDeUmInvestidor(int usuarioId) =>
         (await _produtoFinanceiroTableDataGateway.ConsultarProdutosDeUmUsuario(usuarioId)).ToProdutoFinanceiroEntidade();
 
+    public async Task<List<ProdutoFinanceiro>> ConsultarTodosOsProdutos() =>
+        (await _produtoFinanceiroTableDataGateway.ConsultarTodosOsProdutos()).ToProdutoFinanceiroEntidade();
+
     public async Task<List<ExtratoDTO>> ConsultarExtratoRecenteDoProduto(int usuarioId) =>
         await _extratoTableDataGateway.ConsultarExtratoRecente(usuarioId);
 
@@ -54,7 +57,7 @@ public class ProdutoFinanceiroRepository : IProdutoFinanceiroRepository
         else 
         {
             var produto = await ConsultarPorId(produtoId);
-            return produto.Valor;
+            return produto.ValorInicial;
         }
     }
 }

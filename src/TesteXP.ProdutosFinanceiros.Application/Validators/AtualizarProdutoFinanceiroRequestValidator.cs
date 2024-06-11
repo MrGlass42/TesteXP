@@ -22,10 +22,10 @@ namespace TesteXP.ProdutosFinanceiros.Application.Validators
 
             RuleFor(x => x.Status)
                 .IsInEnum()
-                .NotEmpty().WithMessage("o status é obrigatrório");
+                .NotNull().WithMessage("o status é obrigatrório");
 
             RuleFor(x => x.DisponivelParaVenda)
-                .NotEmpty().WithMessage("o campo disponivel para venda é obrigatrório");
+                .NotNull().WithMessage("o campo disponivel para venda é obrigatrório");
         }
     }
 }

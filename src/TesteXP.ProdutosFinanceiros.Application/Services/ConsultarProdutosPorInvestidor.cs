@@ -22,7 +22,11 @@ public class ConsultarProdutosPorInvestidor : IConsultarProdutosPorInvestidor
     {
         var investidor = await _investidorRepository.ConsultarPorEmail(email)
             ?? throw new InvestidorNaoEncontradoException("não foi possivel encontrar o investidor");
-        
-        return await _produtoFinanceiroRepository.ConsultarProdutosDeUmInvestidor(investidor.Id);
+
+        var produtos = await _produtoFinanceiroRepository.ConsultarProdutosDeUmInvestidor(investidor.Id);
+        foreach (var prd in produtos)
+            prd.ValorAtual = await _produtoFinanceiroRepository.ConsultarValorAtualProduto(prd.Id);
+
+        return produtos;
     }
 }
