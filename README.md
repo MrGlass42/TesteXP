@@ -115,7 +115,7 @@ Repositorio Destinado a implementação do teste para XP
 
 #### Endpoints:
 * **Endpoints de usuários**:
-<b>POST - /usuarios</b> - Cadastra um novo usuário
+<br /><b>POST - /usuarios</b> - Cadastra um novo usuário
 <br /><b>GET - /usuarios</b> - Consulta todos os usuários
 <br /><b>PATCH - /usuarios/inativar/{idUsuario}</b> - Consulta todos os usuários
 
@@ -152,7 +152,7 @@ Ao inativar um usuário, ele será removido do keycloak para que um novo token d
 <hr />
 
 * **Endpoints de produtos financeiros**:
-<b>PATCH - /Produto/disponivel/true/{idProdutoFinanceiro}</b> - Atualiza se um produto deve estar disponivel ou não para venda
+<br /><b>PATCH - /Produto/disponivel/true/{idProdutoFinanceiro}</b> - Atualiza se um produto deve estar disponivel ou não para venda
 <br /><b>PATCH - /Produto/inativar/{idProdutoFinanceiro}</b> - Inativa um produto financeiro
 <br /><b>PATCH - /Produto/ativar/{idProdutoFinanceiro}</b> - Ativa um produto financeiro
 <br /><b>POST - /Produto</b> - Cadastra um novo produto financeiro
@@ -180,7 +180,7 @@ Ao inativar um usuário, ele será removido do keycloak para que um novo token d
 <hr />
 
 * **Endpoints de operações**:
-<b>POST - /Operacao/fake</b> - Simula rendimento alimentando o extrato para todos os produtos cadastrados
+<br /><b>POST - /Operacao/fake</b> - Simula rendimento alimentando o extrato para todos os produtos cadastrados
 <br /><b>POST - /Operacao/comprar/{idProdutoFinanceiro}</b> - Registra a compra de um produto financeiro disponivel para venda
 <br /><b>GET - /Produto/extrato</b> - Consulta o extrato de todos os produtos de um investidor, traz os ultimos 20 registros de extrato
 <br /><b>GET - /Produto/meus_produtos</b> - Retornar todos os produtos financeiros de um investidor
