@@ -228,7 +228,7 @@ E agora, podemos chamar o endpoint de extrato e acompanhar a evolução do produ
 
 ![alt text](images/image_19.png)
 
-Os registros no array **"historicoRendimento"** está ordenado de forma decrescente, então olhando o ulitmo registro, podemos ver o valor inicial do produto no campo **"valorAnterior"**, o mesmo valor que usamos ao cadastrar esse produto, mas também podemos ver o valor de redimento, que foi de 50%, e podemos acompanhar a progressão desse rendimento no registro acima, cujo valor anterior foi atualizado e o valor de seu rendimento acompanha o registro.
+Os registros no array **"historicoRendimento"** estão ordenados de forma decrescente, então, olhando para o ulitmo registro, podemos ver o valor inicial do produto no campo **"valorAnterior"**, o mesmo valor que usamos para cadastrar esse produto, mas também podemos ver o valor de redimento, que foi de 50%, e podemos acompanhar a progressão desse rendimento no registro acima, cujo valor anterior foi atualizado e o valor de seu rendimento acompanha o registro.
 
 Podemos ver também o total de rendimento do produto desde o seu cadastro com o campo **"mensagem"**, e o valor atual do produto no campo **"valorAtual"**
 
@@ -237,6 +237,7 @@ Podemos ver também o total de rendimento do produto desde o seu cadastro com o 
 #### Pontos de atenção
 
 * **Aplicação para disparo de email**
+  
 A aplicação RW_Email, que é responsável por enviar emails através de uma integração com o serviço da Sendgrid, precisa de uma chave para funcionar corretamente. A chave deve ser posta no appsettings da aplicação, presente no caminho relativo a este README.md (src\RW_Email.Api\appsettings.json):
 
 ![alt text](images/image_20.png)
