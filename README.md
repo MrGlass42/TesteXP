@@ -7,6 +7,7 @@ Repositorio Destinado a implementação do teste para XP
 #### Execução da aplicação
 
 *   Na raiz do diretório, executar o comando abaixo para iniciar a aplicação:
+* **Versão Docker - (26.1.3)**, **Versão Docker Compose - (1.29.2)**
 
  ```bash
     docker-compose up -d
