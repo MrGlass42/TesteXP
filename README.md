@@ -116,8 +116,8 @@ Repositorio Destinado a implementação do teste para XP
 #### Endpoints:
 * **Endpoints de usuários**:
 <b>POST - /usuarios</b> - Cadastra um novo usuário
-<b>GET - /usuarios</b> - Consulta todos os usuários
-<b>PATCH - /usuarios/inativar/{idUsuario}</b> - Consulta todos os usuários
+<br /><b>GET - /usuarios</b> - Consulta todos os usuários
+<br /><b>PATCH - /usuarios/inativar/{idUsuario}</b> - Consulta todos os usuários
 
 <br />
 
@@ -153,13 +153,13 @@ Ao inativar um usuário, ele será removido do keycloak para que um novo token d
 
 * **Endpoints de produtos financeiros**:
 <b>PATCH - /Produto/disponivel/true/{idProdutoFinanceiro}</b> - Atualiza se um produto deve estar disponivel ou não para venda
-<b>PATCH - /Produto/inativar/{idProdutoFinanceiro}</b> - Inativa um produto financeiro
-<b>PATCH - /Produto/ativar/{idProdutoFinanceiro}</b> - Ativa um produto financeiro
-<b>POST - /Produto</b> - Cadastra um novo produto financeiro
-<b>PUT - /Produto</b> - Atualiza um produto financeiro
-<b>GET - /Produto</b> - Consulta os produtos disponiveis para venda
-<b>GET - /Produto/{idProdutoFinanceiro}</b> - Consulta um produto financeiro por id
-<b>GET - /Produto/todos</b> - Consulta todos os produtos independente de status ou disponibilidade para venda
+<br /><b>PATCH - /Produto/inativar/{idProdutoFinanceiro}</b> - Inativa um produto financeiro
+<br /><b>PATCH - /Produto/ativar/{idProdutoFinanceiro}</b> - Ativa um produto financeiro
+<br /><b>POST - /Produto</b> - Cadastra um novo produto financeiro
+<br /><b>PUT - /Produto</b> - Atualiza um produto financeiro
+<br /><b>GET - /Produto</b> - Consulta os produtos disponiveis para venda
+<br /><b>GET - /Produto/{idProdutoFinanceiro}</b> - Consulta um produto financeiro por id
+<br /><b>GET - /Produto/todos</b> - Consulta todos os produtos independente de status ou disponibilidade para venda
 
 <br />
 
@@ -181,9 +181,9 @@ Ao inativar um usuário, ele será removido do keycloak para que um novo token d
 
 * **Endpoints de operações**:
 <b>POST - /Operacao/fake</b> - Simula rendimento alimentando o extrato para todos os produtos cadastrados
-<b>POST - /Operacao/comprar/{idProdutoFinanceiro}</b> - Registra a compra de um produto financeiro disponivel para venda
-<b>GET - /Produto/extrato</b> - Consulta o extrato de todos os produtos de um investidor, traz os ultimos 20 registros de extrato
-<b>GET - /Produto/meus_produtos</b> - Retornar todos os produtos financeiros de um investidor
+<br /><b>POST - /Operacao/comprar/{idProdutoFinanceiro}</b> - Registra a compra de um produto financeiro disponivel para venda
+<br /><b>GET - /Produto/extrato</b> - Consulta o extrato de todos os produtos de um investidor, traz os ultimos 20 registros de extrato
+<br /><b>GET - /Produto/meus_produtos</b> - Retornar todos os produtos financeiros de um investidor
 
 * **Execução**:
 <br />
