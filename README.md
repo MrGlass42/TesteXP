@@ -21,22 +21,34 @@ Repositorio Destinado a implementação do teste para XP
 
  ![alt text](images/image_0.png)
 
- * Quando todos os componentes estiverem com status "Up", a aplicação pode estará pronta para testes.
+ * Quando todos os componentes estiverem com status "Up", a aplicação estará pronta para testes.
 
  <hr />
 
  #### Estrutura da aplicação
   
   * A solução do projeto segue a seguinte estrutura: <br />
+
   ![alt text](images/image_1.png)
 
   <br />
 
   * A pasta de solução "EmailApp" guarda todo o codigo para execução da aplicação para envio de emails.
-   
-  <br />
 
-  * A pasta de soluçao "MainApp" é guarda o código voltado ao escopo de usuários, produtos financeiros, compra, venda e consulta de extrato.
+  * A pasta de soluçao "MainApp" guarda o código voltado ao escopo de usuários, produtos financeiros, compra, venda e consulta de extrato.
+  
+  * Os projetos .Application, possuem toda a logica core de seu escopo:
+    <br /> RW_Email.Application - Responsável pelo core para disparo de emails
+    <br /> TesteXP.Usuarios.Application - Responsável pelo core de gerenciamento de usuarios e integração com o keycloak
+    <br /> TesteXP.ProdutosFinanceiros.Application - Responsável pelo core de produtos financeiros e suas operações
+
+  * Os projetos .Api, possuem toda a logica de exposição das aplicações via padrão REST:
+    <br /> RW_Email.Api - Api REST para disparo de emails
+    <br /> TesteXP.Api - Api REST para produtos financeiros e suas operações
+
+  * O projeto TesteXP.Infra é responsável por definir arquivos e libs a nivel de infraestrutura que são comum entre os projetos:
+    <br />TesteXP.Usuarios.Application
+    <br />TesteXP.ProdutosFinanceiros.Application
 
 <hr />
 
