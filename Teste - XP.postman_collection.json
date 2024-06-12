@@ -10,13 +10,32 @@
 			"name": "Usuarios",
 			"item": [
 				{
+					"name": "Inativar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/usuarios/inativar/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"usuarios",
+								"inativar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Cadastrar",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Tipo\": 1,\r\n    \"Nome\": \"Nickelbeck\",\r\n    \"Senha\": \"123\",\r\n    \"Email\": \"teste@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"Tipo\": 1,\r\n    \"Nome\": \"Darth vader\",\r\n    \"Senha\": \"DeathStar2454\",\r\n    \"Email\": \"vader.darth@evil.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -47,25 +66,6 @@
 							],
 							"path": [
 								"usuarios"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Inativar",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/usuarios/inativar/2",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"usuarios",
-								"inativar",
-								"2"
 							]
 						}
 					},
@@ -172,7 +172,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Nome\": \"FFYTr0G 2\",\r\n    \"Valor\": 700,\r\n    \"RendimentoDiario\": 0.50,\r\n    \"DataVencimento\": \"2024-06-20\"\r\n}",
+							"raw": "{\r\n    \"Nome\": \"FFYTr0G 3\",\r\n    \"Valor\": 700,\r\n    \"RendimentoDiario\": 0.50,\r\n    \"DataVencimento\": \"2024-06-20\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -299,14 +299,14 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/Operacao/comprar/2",
+							"raw": "{{base_url}}/Operacao/comprar/3",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"Operacao",
 								"comprar",
-								"2"
+								"3"
 							]
 						}
 					},
