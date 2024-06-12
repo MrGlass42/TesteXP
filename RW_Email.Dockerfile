@@ -20,4 +20,4 @@ COPY --from=builder /build/templates /templates
 
 EXPOSE 80
 
-ENTRYPOINT ["dotnet", "TRW_Email.Api.dll"]
+ENTRYPOINT ["dotnet", "RW_Email.Api.dll"]
