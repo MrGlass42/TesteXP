@@ -251,4 +251,4 @@ Obs: por questão de configurações do sendgrid, não pude usar o dominio do ap
 
 * **Aplicação para disparo de email**
   
-Os containeres do ecosistema já irão configurados com o dump da minha base local após os testes de validação da aplicação, o dump está na pasta db/dump.sql dentro deste repo, o dump também contempla a configuração da base do keycloak, neste mesmo repo também está presente a configuração importavel do realm do keycloak no formato json (**realm-export.json**). O dump deve ser importado automaticamente ao subir o container do mysql.
+Os containeres do ecosistema já irão configurados com o dump da minha base local após os testes de validação da aplicação, o dump está na pasta db/dump.sql dentro deste repo, o dump também contempla a configuração da base do keycloak. Neste mesmo repo também está presente a configuração importavel do realm do keycloak no formato json (**realm-export.json**). O dump deve ser importado automaticamente ao subir o container do mysql.
