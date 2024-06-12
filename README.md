@@ -119,7 +119,7 @@ Repositorio Destinado a implementação do teste para XP
 
 #### Como usar a aplicação
 
-  * Na raiz do repositório existe uma collection postman para importação e consumo dos endpoints implementados na aplicação, as urls, um usuário padrão e um script para alimentação automático do token já estão implementados nessa collection, para confirmar, após a importação da collection, navegue até o menu scripts e variables do postman:
+  * Na raiz do repositório existe uma collection postman para importação e consumo dos endpoints implementados na aplicação, as urls, um usuário padrão e um script para alimentação automático do token já estão implementados nessa collection. Após a importação da collection, navegue até o menu scripts e variables do postman:
 
 ![alt text](images/image_3.png)
 ![alt text](images/image_4.png)
@@ -179,7 +179,7 @@ Ao inativar um usuário, ele será removido do keycloak para que um novo token d
 <br />
 
 **Cadastro**
-![alt text](image.png)
+![alt text](images/image_12.png)
 
 * O campo **Rendimento Diário** é um parametro de configuração usado pelo endpoint **/Operacao/fake** para simular um rendimento dos produtos.
 * O campo **Valor** representa o valor inicial do produto.
